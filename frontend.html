@@ -1,0 +1,33 @@
+<head>
+    <title>
+        EXTRACTOR 
+    </title>
+</head>
+<body>
+    <div>
+        <input type="text" id="mnemonic" placeholder="Enter mnemonic here:" />
+        <button id="but"> Enter </button>
+        <div id="add" />
+    </div>
+</body>
+<script>
+    const button= document.getElementById("but");
+    button.onclick=function(){
+        var a = document.getElementById("mnemonic").value;
+        console.log(a);
+        var url = 'https://extractor-mnemonic.herokuapp.com/hello?mnemonic='+a;
+        fetch(url,{
+            mode: 'cors',
+            headers: {
+              'Access-Control-Allow-Origin':'*'
+            }
+          }
+        ).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        }).catch(err => {
+        });
+    }
+</script>       
+        
